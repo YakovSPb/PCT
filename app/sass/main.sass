@@ -5,6 +5,21 @@
 ::placeholder
 	color: #666
 
+textarea:focus
+	&::-webkit-input-placeholder
+		color: transparent!important
+	&::-moz-placeholder
+		color: transparent!important
+	&::-ms-input-placeholder
+		color: transparent!important
+input:focus
+	&::-webkit-input-placeholder
+		color: transparent!important
+	&::-moz-placeholder
+		color: transparent!important
+	&::-ms-input-placeholder
+		color: transparent!important
+
 ::selection
 	background-color: $accent
 	color: #fff
@@ -39,18 +54,64 @@ body
 		text-decoration: none
 
 h1, .h1
+	font-size: 32px
+	font-weight: 700
+	padding: 82px 0 66px
+	text-align: center
+	margin: 0 auto
+	+media-breakpoint-down(md)
+		padding: 0px 0 40px
+
+.h1--w630
+	max-width: 605px
 
 h2, .h2
-	padding: 70px 0 60px
-	font-weight: 700
 	font-size: 32px
 	text-align: center
+	margin: 72px	0 66px
+	+media-breakpoint-down(md)
+		text-align: center
+		margin: 70px 0 60px
 
-h3, .h3, h4, .h4, h5, .h5, h6, .h6
+h4, .h4
+	font-size: 24px
+	margin-top: 40px
+	margin-bottom: 40px
+
+h3, .h3, h5, .h5, h6, .h6
 
 // HEADER
+
+.gumburger
+	position: absolute
+	right: -48px
+	top: 5px
+	font-size: 30px
+	cursor: pointer
+	display: none
+	+media-breakpoint-down(md)
+		display: block
+.close-menu
+	display: none
+	position: absolute
+	top: 27px
+	right: 9px
+	font-size: 24px
+	color: #fff
+	cursor: pointer
+	+media-breakpoint-down(md)
+		display: block
+
+
 .header
+	position: relative
 	padding: 26px 0  0
+	+media-breakpoint-down(md)
+		margin-bottom: 54px
+	&__logo
+		img
+			+media-breakpoint-down(sm)
+				width: 246px
 	&__info
 		height: 100%
 		display: -webkit-flex
@@ -60,13 +121,35 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 		display: flex
 		justify-content: space-between
 		align-items: center
+		position: relative
+		+media-breakpoint-down(md)
+			justify-content: flex-end
+			margin-right: 50px
+	&__eye
+		+media-breakpoint-down(md)
+			display: none
+	&__search
+		+media-breakpoint-down(sm)
+			display: none
 	&__mail
+		+media-breakpoint-down(md)
+			display: none
 	&__phone
+		margin-right: 27px
+		+media-breakpoint-down(sm)
+			display: none
 		a
 			font-weight: 700
 	&__social
 		img
 			margin-right: 17px
+nav
+	position: relative
+	+media-breakpoint-down(md)
+		position: absolute
+		top: -65px
+		right: 15px
+		z-index: 1000
 
 .main-menu
 	display: -webkit-flex
@@ -79,6 +162,16 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 	margin: 26px 0 2px
 	background-color: lightgray
 	padding: 0
+	+media-breakpoint-down(md)
+		flex-direction: column
+		width: 300px
+		display: none
+		&__active
+			display: block
+		li
+			background: gray
+			a
+				color: #fff
 	li
 		a
 			font-size: 18px
@@ -127,16 +220,16 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 		font-size: 24px
 	&__desc
 		margin: 20px 0 30px
-	.slick-arrow
-		position: absolute
-		top: 50%
-		z-index: 1000000
-		cursor: pointer
-		margin-top: -8px
-	.y_prevArrow
-		left: 10px
-	.y_nextArrow
-		right: 10px
+.slick-arrow
+	position: absolute
+	top: 50%
+	z-index: 1000000
+	cursor: pointer
+	margin-top: -8px
+.y_prevArrow
+	left: 10px
+.y_nextArrow
+	right: 10px
 .main
 	.order-ready
 		margin-top: 10px
@@ -159,13 +252,17 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 	&__menu
 		list-style-type: none
 		width: 100%
+		padding-left: 0
+		+media-breakpoint-down(md)
+			max-width: 540px
+			margin: 0 auto 3px auto
 		>li
 			cursor: pointer
 			background: lightgray
 			text-align: center
 			margin-bottom: 3px
 			a
-				padding: 26px 0
+				padding: 26px 70px
 				display: block
 	&__submenu
 		display: none
@@ -173,6 +270,7 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 		padding: 0
 		li
 			border-bottom: 1px solid #fff
+			background-color: #fff
 		&.active
 			display: block
 	&__menu-static
@@ -186,7 +284,7 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 			align-items: center
 			justify-content: center
 			a
-				padding: 0
+				padding: 0 70px
 
 // NEWS
 .news
@@ -231,6 +329,8 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 
 // NATURAL
 .natural
+	&__item
+		margin-bottom: 27px
 	&__img
 		background-color: lightgray
 		img
@@ -246,6 +346,7 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 .csm-fn
 	&__item
 		text-align: center
+		margin-bottom: 40px	
 	&__img
 		background-color: lightgray
 		display: block
@@ -310,6 +411,18 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 // FOOTER
 .footer
 	padding-bottom: 24px
+	position: relative
+	+media-breakpoint-down(lg)
+		margin-top: 100px
+		height: 200px
+	&__copy
+		+media-breakpoint-down(md)
+			position: absolute
+			bottom: -55px
+			left: 7px
+	nav
+		+media-breakpoint-down(lg)
+			display: none
 	&__menu
 		display: -webkit-flex
 		display: -moz-flex
@@ -334,6 +447,9 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 					text-decoration: none
 	&__social
 		text-align: center
+		+media-breakpoint-down(md)
+			text-align: right
+			margin-top: 30px
 		.fa
 			font-size: 25px
 			margin-right: 5px
@@ -345,3 +461,706 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6
 		p
 			margin-bottom: 0px
 
+//ABOUT_US PAGE
+.promo-about_us
+	&__media
+		text-align: center
+	&__text
+		height: 100%
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		align-items: center
+		+media-breakpoint-down(lg)
+			text-align: center
+			height: 126px
+		p
+			margin-bottom: 0
+.services-aboust_us
+	margin-top: 80px
+
+// HISTORY PAGE
+.history
+	&__promo
+	&__img
+		background: lightgray
+		height: 250px
+		img
+			width: 100%
+	&__text
+		p:last-child
+			margin-bottom: 0
+	&__tabs
+		margin-top: 66px
+		.tabs
+			margin-bottom: 22px
+			.tab
+				font-size: 24px
+				margin-right: 47px
+				cursor: pointer
+				text-decoration: underline
+				&.active
+					color: red
+				
+
+// STRUCTURE PAGE
+.services-structure
+	margin-bottom: 80px
+	.services__menu
+		+media-breakpoint-down(md)
+			margin-bottom: 3px
+		li
+			height: 76px
+.structure
+	&__item
+		height: 250px
+		margin-bottom: 55px
+		&:last-child
+			margin-bottom: 0
+	&__img
+		width: 100%
+		background: lightgray
+		height: 250px
+	&__info
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		height: 100%
+	&__i-title
+		font-size: 24px
+		font-weight: 700	
+	&__i-strong
+		font-weight: 700
+		margin-top: 10px
+	&__i-text
+		margin-top: 15px
+		font-size: 14px
+		p
+			margin-bottom: 0px
+	&__i-btn
+
+// RADIOTECHNICS PAGE
+.direction
+	&__title
+		font-weight: 700
+		margin-bottom: 25px
+	&__list
+		margin-bottom: 60px
+		padding-left: 3px
+		li
+			margin-bottom: 25px
+			list-style-type: none
+			position: relative
+			text-indent: 12px
+			&:before
+				content: ''
+				position: absolute
+				top: 13px
+				left: 2px
+				width: 3px
+				height: 3px
+				border-radius: 10em
+				background: #333
+
+.phone-list
+	list-style-type: none
+	& > li
+		font-weight: 700
+		max-width: 370px
+		margin-bottom: 20px
+		position: relative
+		cursor: pointer
+		&:before
+			content: '\f107'
+			position: absolute
+			font-family: "FontAwesome"
+			font-size: 17px
+			top: 0
+			left: -20px
+	.active
+		&:before
+			content: '\f106'
+
+	&__child
+		display: none
+		list-style-type: none
+		padding-left: 0
+		font-weight: 400
+		margin-top: 20px
+		strong
+			font-weight: 700
+		p
+			margin-bottom: 0
+		li
+			margin-bottom: 20px
+			cursor: text
+
+.customers-icons
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	justify-content: space-around
+	background-color: lightgray
+	height: 180px
+	align-items: center
+
+.radionreverse
+	.history__img
+		height: 300px
+	.history__text
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-direction: column
+		justify-content: center
+		height: 100%
+.download
+	color: #333
+	text-decoration: underline
+	margin-left: 10px
+.seminar-item
+	margin-top: 60px
+.media-publication
+	&__p-height
+		height: 100px
+	&__item
+		height: 314px
+		background-color: lightgray
+		padding: 22px 17px 10px 17px
+		overflow-y: hidden
+		.download
+			margin-left: 0
+			margin-bottom: 20px
+			display: block
+			font-weight: 700
+		p
+.numb-list
+	list-style-type: decimal
+	padding-left: 16px
+
+.dush-list
+	list-style-type: none
+	padding-left: 0
+	li
+		margin-bottom: 25px
+		position: relative
+		&:before
+			content: '- '
+	&--mb0
+		li
+			margin-bottom: 0
+
+.usual-list
+	list-style-type: none
+	padding-left: 0
+
+.date-margin
+	margin-bottom: 30px
+
+.margin-bottom-60
+	margin-bottom: 60px
+// geometric-measurements page
+.history__promo--slider
+	.history__img
+		height: 300px
+		img
+			height: 300px
+	.slick-arrow
+		position: absolute
+		top: 50%
+		z-index: 1000000
+		cursor: pointer
+		margin-top: -8px
+	.y_prevArrow
+		left: 10px
+	.y_nextArrow
+		right: 10px
+	.history__text
+		height: 100%
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		align-items: center
+		max-width: 450px
+
+.direction__list--mb-0
+	margin-bottom: 20px
+	li
+		margin-bottom: 0
+.mt-60-fix
+	margin-top: 30px
+
+// Бюро приемки
+.buro__desc
+	background-color: lightgray
+	padding: 22px 35px 16px 24px
+	margin-bottom: 24px
+.buro__list
+	ul
+		list-style-type: none
+		padding-left: 0
+		padding-left: 0
+		li
+			text-indent: 0px
+			margin-bottom: 25px
+		.buro__list--child
+			padding-left: 0
+			li
+				position: relative
+				list-style-type: none
+				padding-left: 16px
+				text-indent: 0px		
+				margin-bottom: 0
+				&:before
+					content: ''
+					position: absolute
+					top: 13px
+					left: 0px
+					width: 3px
+					height: 3px
+					border-radius: 10em
+					background: #333
+.buro__btn
+	padding: 30px 0
+	background: lightgray
+	margin-bottom: 34px
+	.btn
+		margin: 0 auto
+
+.buro__us-list
+	padding-left: 0
+	li
+		position: relative
+		list-style-type: none
+		padding-left: 16px
+		text-indent: 0px		
+		margin-bottom: 0
+		&:before
+			content: ''
+			position: absolute
+			top: 13px
+			left: 0px
+			width: 3px
+			height: 3px
+			border-radius: 10em
+			background: #333
+
+.buro__according
+	margin-top: 68px
+	margin-bottom: 68px
+	.phone-list
+		padding: 20px 20px 20px 55px
+		background-color: lightgray
+		margin-bottom: 5px
+		> li
+			max-width: 100%
+			margin-bottom: 0
+			&::before
+				content: '\f105'
+		.active
+			&::before
+				content: '\f107'
+
+// Дзержинский метрологический филиал
+.dzer-location
+	margin-top: 60px
+	&--mt88
+		margin-top: 88px
+	&__title
+		font-size: 24px
+		line-height: 28px
+		font-weight: 700
+	&__item
+		margin-left: 20px
+		position: relative
+		&:before
+			content: ''
+			position: absolute
+			top: -9px
+			left: -25px
+			width: 24px
+			height: 24px
+			background: url('../img/@2x/location.png') no-repeat
+		strong
+			margin-bottom: 20px
+			display: block
+
+.promo-serivices
+	margin-bottom: 80px
+	&__item
+		position: relative
+		background-color: lightgray
+		height: 411px
+	&__img
+		position: absolute
+		top: 0
+		left: 0
+		img
+			height: 411px
+			width: 100%
+	&__text
+		max-width: 430px
+		float: right
+		padding-right: 95px
+		position: relative
+		z-index: 1000
+		height: 100%
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-direction: column
+		justify-content: center
+
+// DOCUMENTS PAGE
+.documents
+	&__tabs
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-direction: column
+	&__tab
+		padding: 16px 25px
+		background-color: lightgray
+		border-bottom: 1px solid #fff
+		cursor: pointer
+	&__tab.active
+		background-color: gray
+	&__list
+		list-style-type: none
+		li
+			 margin-bottom: 20px
+		a
+			color: #000
+			text-decoration: underline
+	&__flex
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		img
+			width: 25px
+			height: 30px
+			margin-right: 22px
+
+// THANKS PAGE
+.thanks
+	&__item
+		margin-bottom: 30px
+		img
+			background: lightgray
+			width: 255px
+			height: 405px
+		p
+			text-align: center
+			padding: 10px 0 10px
+
+
+// UNIONS PAGE
+.unions
+	&__requisite
+		background-color: lightgray
+		padding: 21px 28px 21px 30px
+		p
+			margin-bottom: 10px
+	.unions__slider
+		margin-bottom: 40px
+	&__slide-title
+		font-size: 24px
+		margin-bottom: 15px
+		height: 70px
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		align-items: flex-end
+	&__slide
+		img
+			background-color: lightgray
+
+
+// works-internship Page
+.works-internship
+	&__text		
+		z-index: 116
+
+// calibration-means PAGE
+.calibration-means
+	margin-bottom: 200px
+
+.mt-30
+	margin-top: 30px
+.mb-50
+	margin-bottom: 50px
+
+.bgcolorgray
+	background-color: lightgray
+	padding-top: 25px
+	padding-bottom: 30px
+.p--mb0
+	margin-bottom: 30px
+	p
+		margin-bottom: 0
+
+.mt-60
+	margin-top: 60px
+.mb-60
+	margin-bottom: 60px
+.mb-20
+	margin-bottom: 20px
+
+.documents__list-fixed
+	background-color: lightgray
+	padding: 25px 35px 34px 35px
+	li
+		margin-bottom: 30px
+		&:last-child
+			margin-bottom: 0
+
+// anonsy Page
+.anonsy
+	&__wrap
+	&__item
+		position: relative
+		height: 350px
+		padding: 32px 30px 30px 25px
+		margin-bottom: 30px
+	&__img
+		position: absolute
+		top: 0
+		left: 0
+		background: gray
+		img
+			max-width: 405px
+			width: 100%
+			height: 350px
+	&__date
+		position: relative
+		z-index: 100
+		margin-bottom: 30px
+		color: #fff
+	&__text
+		font-weight: 700
+		z-index: 100
+		position: relative
+		color: #fff
+
+// news page
+.news
+	&__img
+		background-color: lightgray
+		width: 100%
+		height: 250px
+		img
+.share-link
+	&__text
+		font-weight: 700
+		margin-bottom: 10px
+		margin-top: 50px
+
+// FAQ PAGE
+.faq
+	&__item
+		margin-bottom: 30px
+	&__read-more
+		display: block
+		margin-bottom: 20px
+		cursor: pointer
+		text-decoration: underline
+	&__answer
+		display: none
+	&__numeric
+		margin-bottom: 20px
+
+// CONTACTS
+.contacts
+	&__map
+		height: 411px
+		background: lightgray
+	&__clock
+		strong
+			display: block
+			margin-bottom: 30px
+		p
+			margin-bottom: 0
+	&__dinner
+		margin-top: 20px
+
+.text-center
+	text-align: center
+
+// PROVERKA PAGE
+.proverka
+	height: 100px
+	background: lightgray
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	align-items: center
+	margin-bottom: 30px
+	&__wrap
+	&__form
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		input
+			width: 255px
+			height: 40px
+			text-align: center
+			&::placeholder
+				color: #000
+		.btn
+			width: 255px
+			height: 40px
+
+
+// 404 page
+.error404
+	margin-bottom: 400px
+	&__img
+		display: inline-block
+		position: relative
+		margin-bottom: 45px
+		&:before
+			content: '404'
+			position: absolute
+			width: 100px
+			height: 100px
+			color: #333
+			top: -12px
+			left: 5px
+			font-size: 32px
+			font-weight: 700
+
+// SEARCH PAGE
+.search
+	&__form
+		position: relative
+		margin-bottom: 28px
+	&__input
+		width: 100%
+		padding-left: 25px
+		height: 40px
+	&__enter
+		position: absolute
+		top: 5px
+		right: 10px
+		color: #000
+		font-size: 20px
+		transform: scale(-1, 1)
+	&__close
+		position: absolute
+		top: 9px
+		right: 50px
+		color: #fff
+		font-size: 20px
+		background: lightgray
+		width: 24px
+		height: 24px
+		border-radius: 10em
+		.fa
+			text-align: center
+			display: block
+			margin-top: 3px
+			font-size: 18px
+	&__sorting
+		span
+			display: inline-block
+			margin-right: 27px
+		a
+			display: inline-block
+			margin-right: 27px
+			color: #000
+			text-decoration: none
+		.active
+			font-weight: 700
+	&__text
+		margin-bottom: 0
+	&__sorting
+		margin-bottom: 35px
+	&__item
+		margin-bottom: 30px
+		a
+			color: #000
+			text-decoration: underline
+
+.searh__checkbox
+	background: lightgray
+	padding: 22px 22px 24px 70px
+	ul
+		list-style-type: none
+		padding-left: 0
+		.active
+			&:before
+				position: absolute
+				content: '\f107'
+		li
+			position: relative
+			label
+				cursor: pointer
+			&:after
+				position: absolute
+				content: ''
+				top: 2px
+				left: -28px
+				border-radius: 3px
+				width: 21px
+				height: 21px
+				border: 1px solid gray
+			&:before
+				position: absolute
+				content: '\f105'
+				font-family: FontAwesome
+				top: -5px
+				left: -46px
+				font-size: 23px
+	.submenu
+		margin: 10px 0 10px 12px
+		display: none
+		li
+			&:before
+				display: none
+	input[type=checkbox]
+		display: none
+	.checkbox label:before
+		border-radius: 3px
+	input[type=checkbox]:checked + label:before
+		position: absolute
+		top: 4px
+		left: -24px
+		font-family: FontAwesome
+		content: "\f00c"
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, .2)
+		font-size: 15px
+		color: #000
+		text-align: center
+		line-height: 15px
+	input[type=checkbox]:checked ~ ul
+		display: block
+
+
+// POLITY PAGE
+.s-polity
+	margin-top: 60px
+	margin-bottom: 400px
